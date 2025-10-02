@@ -38,6 +38,17 @@ public class PlayerController : MonoBehaviour
         {
             myAnim.SetTrigger("ATTACK");
         }
+
+        myAnim.SetBool("RUN", h != 0);
+
+        if (h > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (h < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
