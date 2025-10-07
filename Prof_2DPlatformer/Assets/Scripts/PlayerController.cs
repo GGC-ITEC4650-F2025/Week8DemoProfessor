@@ -6,15 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D myBod;
     Animator myAnim;
+    InventoryMgr inv;
 
     public float runSpeed;
     public float jumpSpeed;
     public int maxJumps;
 
-    private int jumpsRemaining;
+    public int jumpsRemaining;
     // Start is called before the first frame update
     void Start()
     {
+        inv = GameObject.Find("Inventory").GetComponent<InventoryMgr>();
         myAnim = GetComponent<Animator>();
         myBod = GetComponent<Rigidbody2D>();
         jumpsRemaining = 0;
@@ -37,6 +39,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             myAnim.SetTrigger("ATTACK");
+        }
+        if (Input.GetButtonDown("Fire2") && inv.getCurrentPrefab() != null)
+        {
+            Instantiate(inv.getCurrentPrefab());
         }
 
         myAnim.SetBool("RUN", h != 0);
