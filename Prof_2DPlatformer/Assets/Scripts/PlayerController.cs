@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject otherGO = collision.gameObject;
-        if (otherGO.name == "Ground")
+        if (otherGO.tag == "Ground")
         {
             jumpsRemaining = maxJumps;
         }
